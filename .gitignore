@@ -1,5 +1,3 @@
 __pycache__/
 omega_back/api/settings/local.py
 omega_back/api/db.sqlite3
-
-
