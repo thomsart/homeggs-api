@@ -62,10 +62,23 @@ class FeeOrExpense(models.Model):
         return self.name
 
 
+class ExceptionalExpense(models.Model):
+    """
+    Like it said by it's name, these are exceptionnals expenses...
+    This allow to note in time life's problemes because sometimes we don't 
+    realise why we have finacial troubles. Exemple: broken wash machine.
+    """
+
+    name = models.CharField(max_length=30, unique=True, null=False)
+    note = models.TextField(max_length=100, default="")
+    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=False) # amount on month
+    created_date = models.DateField(auto_now_add=True, null=False) # date set at creation only
+
+
 class Saving(models.Model):
     """
-    Saving represent here an amount for anything, it be can be also an amount intended for a tax.
-    This is why it possibly has a foreign key on Tax.
+    Saving represent here an amount for anything, it be can be also an amount 
+    intended for a tax. This is why it possibly has a foreign key on Tax.
     """
 
     MONTHS = {
@@ -103,6 +116,13 @@ class Saving(models.Model):
 
     def __str__(self):
         return self.name
+
+
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
+###############################################################################
 
 
 class Product(models.Model):
@@ -146,7 +166,8 @@ class Shop(models.Model):
 
 class Coast(models.Model):
     """
-    Many 2 many table in order to compare the cheapest products according to shop prices.
+    Many 2 many table in order to compare the cheapest products according to 
+    shop prices.
     """
 
     product = models.ManyToManyField(Product)
