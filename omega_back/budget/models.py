@@ -8,7 +8,7 @@ class Salary(models.Model):
     Salaries in the family.
     """
 
-    who = models.ForeignKey(User)
+    who = models.ForeignKey(User, on_delete=models.PROTECT)
     company = models.CharField(max_length=15, null=False)
     amount = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=False) # amount of the salary
     created_date = models.DateField(auto_now_add=True, null=False) # date set at creation only
@@ -19,7 +19,7 @@ class Extra(models.Model):
     Extra amounts for exemple sales or donations...
     """
 
-    who = models.ForeignKey(User)
+    who = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=20, null=False)
     amount = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=False) # amount of the salary
     created_date = models.DateField(auto_now_add=True, null=False) # date set at creation only
@@ -98,8 +98,8 @@ class Saving(models.Model):
     }
 
     display_order = models.SmallIntegerField(default=0, null=False) # used when the user want to organize the display rank
-    tax = models.ForeignKey(Tax, default=None)
-    fee_or_expense = models.ForeignKey(FeeOrExpense, default=None)
+    tax = models.ForeignKey(Tax, default=None, on_delete=models.PROTECT)
+    fee_or_expense = models.ForeignKey(FeeOrExpense, default=None, on_delete=models.PROTECT)
     name = models.CharField(max_length=30, unique=True, null=False)
     active = models.BooleanField(default=True, null=False) # you may want to stop to save cause of something
     automatically_deducted = models.BooleanField(default=True, null=False) # automated monthly bank fees
