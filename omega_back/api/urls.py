@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from account.urls import account_urlpatterns
 from budget.urls import budget_urlpatterns
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 
+urlpatterns += account_urlpatterns
 urlpatterns += budget_urlpatterns
