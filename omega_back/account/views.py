@@ -1,136 +1,38 @@
-from rest_framework import serializers
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model, login, logout
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.views import APIView
+from rest_framework import permissions, status
+from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 
-from .models import CustomUser, Status, Membership
-from .forms import CustomUserCreationForm
-from .managers import CustomUserManager
-
-
-
-########### STATUS #######################################################
-
-class StatusSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Status
-        fields = ['id', 'name', 'level']
+from .models import User
+from .serializers import UserSerializer, CreateUserSerializer, UpdateUserSerializer, LoginUserSerializer
 
 
-########### USER #########################################################
+class UserLogin(APIView):
 
-####################
-class LoginCustomUserSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField()
+    permission_classes = (permissions.AllowAny,)
+    authentication_classes = (SessionAuthentication,)
 
-    def check_user(self, clean_data):
-        user = authenticate(email=clean_data['email'],
-                            password=clean_data['password'])
+    def post(self, request):
 
-        if not user:
-            # raise ValidationError('user not found')
-            return False
-        return user
-####################
+        data = request.data
+        # assert validate_email(data)
+        # assert validate_password(data)
+        serializer = LoginUserSerializer(data=data)
 
-class LightCustomUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ["id", "first_name", "last_name", "phone"]
+        if serializer.is_valid(raise_exception=True):
+            user = serializer.check_user(data)
+            serializer = UserSerializer(user)
+            login(request, user)
 
-class HeavyCustomUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ["id", "first_name", "last_name", "email", "phone",
-                  "days_off", "days_off_cumul", "permanent_contract"]
-
-class CreateCustomUserSerializer(serializers.Serializer):
-    status = serializers.CharField(max_length=30)
-    email = serializers.EmailField(max_length=254)
-    first_name = serializers.CharField(max_length=150)
-    last_name = serializers.CharField(max_length=150)
-    phone = serializers.CharField(max_length=15)
-    password = serializers.CharField(max_length=128)
-
-    def create(self, validated_data):
-
-        status_name = validated_data.pop("status")
-        status = Status.objects.get(name=status_name)
-        user = CustomUser.objects.create_user(**validated_data)
-
-        if user and status:
-            user.hightest_level = status.level
-            user.save()
-            Membership.objects.create(user=user, status=status)
-
-            return user
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-class UpdateCustomUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ["first_name", "last_name", "email", "phone", "permanent_contract"]
+class UserLogout(APIView):
 
+    def post(self, request):
 
-########### MEMBERSHIP ###################################################
+        logout(request)
 
-class LightMembershipSerializer(serializers.ModelSerializer):
-    status = StatusSerializer()
-    user = LightCustomUserSerializer()
-
-    class Meta:
-        model = Membership
-        fields = ["id", "status", "user", "date"]
-
-class HeavyMembershipSerializer(serializers.ModelSerializer):
-    status = StatusSerializer()
-    user = HeavyCustomUserSerializer()
-
-    class Meta:
-        model = Membership
-        fields = ["id", "status", "user", "date"]
-
-class CreateMembershipSerializer(serializers.Serializer):
-    status = StatusSerializer()
-    user = LightCustomUserSerializer()
-
-
-    def to_internal_value(self, data):
-
-        user = data.get('user')
-        status = data.get('status')
-
-        # Perform the data validation.
-        if not user:
-            raise serializers.ValidationError({
-                'user': 'This field is required.'
-            })
-        if not status:
-            raise serializers.ValidationError({
-                'status': 'This field is required.'
-            })
-
-        # Return the validated values. This will be available as
-        # the `.validated_data` property.
-        return {
-            'user': CustomUser.objects.get(id=user["id"]),
-            'status': Status.objects.get(name=status["name"])
-        }
-
-    def create(self, validated_data):
-
-        if Membership.objects.filter(**validated_data).exists():
-            raise serializers.ValidationError({
-                'status': 'The user is already a ' + validated_data['status'].name
-            })
-
-        membership = Membership.objects.create(**validated_data)
-        membership.save()
-
-        user = CustomUser.objects.get(pk=membership.user.pk)
-        status = Status.objects.get(pk=membership.status.pk)
-
-        if int(user.hightest_level) < int(status.level):
-            user.hightest_level = status.level
-            user.save()
-
-        return membership
+        return Response(status=status.HTTP_200_OK)
