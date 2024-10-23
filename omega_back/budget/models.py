@@ -3,13 +3,23 @@ from django.db import models
 from account.models import User
 
 # Create your models here.
+class Company(models.Model):
+    """
+    Company where come from salaries.
+    """
+
+    who = models.ForeignKey(User, on_delete=models.PROTECT)
+    name = models.CharField(max_length=20, null=False)
+    created_date = models.DateField(auto_now_add=True, null=False) # date set at creation only
+
+
 class Salary(models.Model):
     """
     Salaries in the family.
     """
 
     who = models.ForeignKey(User, on_delete=models.PROTECT)
-    company = models.CharField(max_length=15, null=False)
+    company = models.ForeignKey(Company, on_delete=models.PROTECT)
     amount = models.DecimalField(max_digits=7, decimal_places=2, default=0, null=False) # amount of the salary
     created_date = models.DateField(auto_now_add=True, null=False) # date set at creation only
 
@@ -67,6 +77,7 @@ class ExceptionalExpense(models.Model):
     Like it said by it's name, these are exceptionnals expenses...
     This allow to note in time life's problemes because sometimes we don't 
     realise why we have finacial troubles. Exemple: broken wash machine.
+    This allows also to note expenses like presents or holydays etc...
     """
 
     name = models.CharField(max_length=30, unique=True, null=False)

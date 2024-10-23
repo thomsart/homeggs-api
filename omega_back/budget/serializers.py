@@ -1,6 +1,13 @@
 from rest_framework import serializers
 
-from .models import Salary, Extra, Tax, FeeOrExpense, ExceptionalExpense, Saving, Product, Shop, Coast
+from .models import Company, Salary, Extra, Tax, FeeOrExpense, ExceptionalExpense, Saving, Product, Shop, Coast
+
+
+
+class CompanySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        fields = []
 
 
 class SalarySerializer(serializers.ModelSerializer):

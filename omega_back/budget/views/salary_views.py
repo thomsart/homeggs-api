@@ -30,20 +30,20 @@ class SalaryList(APIView):
         return Response(serializer.data)
 
 
-    # def post(self, request, format=None):
+    def post(self, request, format=None):
 
-    #     client = CreateClientSerializer(data=request.data)
+        salary = CreateClientSerializer(data=request.data)
 
-    #     if client.is_valid():
-    #         client = client.save()
-    #         serializer = HeavyClientSerializer(client)
+        if client.is_valid():
+            client = client.save()
+            serializer = HeavyClientSerializer(client)
 
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    #     return Response(client.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(client.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class ClientDetail(APIView):
+class SalaryDetail(APIView):
     """
     Retrieve, update or delete a client.
     """
