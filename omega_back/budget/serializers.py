@@ -5,6 +5,21 @@ from .models import User, Company, Salary, Extra, Tax, FeeOrExpense, Exceptional
 from account.serializers import UserSerializer
 
 
+
+class CreateCompanySerializer(serializers.Serializer):
+    who = UserSerializer()
+    name = serializers.CharField(max_length=20)
+
+    def create(self, validated_data):
+        
+        who = User.objects.get(id=validated_data['who'])
+
+        if who:
+            company = Company.objects.create(who=who.id, name=validated_data['name'])
+
+            return company
+
+
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company

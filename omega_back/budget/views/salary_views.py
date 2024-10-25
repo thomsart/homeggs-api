@@ -1,12 +1,11 @@
 from rest_framework.views import APIView
-from rest_framework import permissions
+from rest_framework import permissions, status
 from rest_framework.response import Response
 from django.http import Http404
-from rest_framework import status
 
 from ..permissions import IsSuperuser, IsActive
 from ..models import Salary
-from ..serializers import SalarySerializer
+from ..serializers import SalarySerializer, CreateSalarySerializer
 
 
 
@@ -32,15 +31,15 @@ class SalaryList(APIView):
 
     def post(self, request, format=None):
 
-        salary = CreateCompanySerializer(data=request.data)
+        salary = CreateSalarySerializer(data=request.data)
 
-        if client.is_valid():
-            client = client.save()
-            serializer = HeavyClientSerializer(client)
+        if salary.is_valid():
+            salary = salary.save()
+            serializer = SalarySerializer(salary)
 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(client.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SalaryDetail(APIView):
