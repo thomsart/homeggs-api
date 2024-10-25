@@ -9,7 +9,6 @@ account_urlpatterns = [
     path('login/', UserLogin.as_view(), name='login'),
     path('logout/', UserLogout.as_view(), name='logout'),
     # ####################
-
     # path('users/', users_views.CustomUserList.as_view(), name='users-list'),
     # path('users/<int:pk>/', users_views.CustomUserDetail.as_view(), name='users-detail'),
     # path('memberships/', memberships_views.MembershipList.as_view(), name='memberships-list'),

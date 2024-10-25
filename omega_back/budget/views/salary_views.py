@@ -32,7 +32,7 @@ class SalaryList(APIView):
 
     def post(self, request, format=None):
 
-        salary = CreateClientSerializer(data=request.data)
+        salary = CreateCompanySerializer(data=request.data)
 
         if client.is_valid():
             client = client.save()
