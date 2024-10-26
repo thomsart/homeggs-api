@@ -1,14 +1,24 @@
 from django.contrib import admin
 
-from . import models
+from .models import (coast, 
+                     company, 
+                     exceptional_expense, 
+                     extra, 
+                     fee_or_expense, 
+                     product, 
+                     salary, 
+                     saving, 
+                     shop, 
+                     tax )
+
 # Register your models here.
-admin.site.register(models.Company)
-admin.site.register(models.Salary)
-admin.site.register(models.Extra)
-admin.site.register(models.Tax)
-admin.site.register(models.FeeOrExpense)
-admin.site.register(models.ExceptionalExpense)
-admin.site.register(models.Saving)
-admin.site.register(models.Product)
-admin.site.register(models.Shop)
-admin.site.register(models.Coast)
+admin.site.register(coast.Coast)
+admin.site.register(company.Company)
+admin.site.register(exceptional_expense.ExceptionalExpense)
+admin.site.register(extra.Extra)
+admin.site.register(fee_or_expense.FeeOrExpense)
+admin.site.register(product.Product)
+admin.site.register(salary.Salary)
+admin.site.register(saving.Saving)
+admin.site.register(shop.Shop)
+admin.site.register(tax.Tax)
