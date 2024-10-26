@@ -6,7 +6,7 @@ from rest_framework import status
 
 from ..permissions import IsSuperuser, IsActive
 from ..models import Company
-from ..serializers import CompanySerializer
+from ..serializers import CreateCompanySerializer, UpdateCompanySerializer, CompanySerializer
 
 
 
@@ -30,17 +30,17 @@ class CompanyList(APIView):
         return Response(serializer.data)
 
 
-    # def post(self, request, format=None):
+    def post(self, request, format=None):
 
-    #     company = CompanySerializer(data=request.data)
+        company = CreateCompanySerializer(data=request.data)
 
-    #     if company.is_valid():
-    #         company = company.save()
-    #         serializer = CompanySerializer(company)
+        if company.is_valid():
+            company = company.save()
+            serializer = CompanySerializer(company)
 
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    #     return Response(company.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(company.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CompanyDetail(APIView):
@@ -66,36 +66,34 @@ class CompanyDetail(APIView):
     def get(self, request, pk, format=None):
 
         company = self.get_object(pk)
-
         serializer = CompanySerializer(company)
 
         return Response(serializer.data)
 
 
-    # def put(self, request, pk, format=None):
+    def put(self, request, pk, format=None):
 
-    #     client = self.get_object(pk)
-    #     serializer = UpdateClientSerializer(client, data=request.data)
+        company = self.get_object(pk)
+        serializer = UpdateCompanySerializer(company, data=request.data)
 
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         client = HeavyClientSerializer(client)
+        if serializer.is_valid():
+            serializer.save()
+            company = CompanySerializer(company)
 
-    #         return Response(client.data)
+            return Response(company.data)
 
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    # def delete(self, request, pk, format=None):
+    def delete(self, request, pk, format=None):
 
-    #     client = self.get_object(pk)
+        client = self.get_object(pk)
 
-    #     try:
-    #         client.is_still_client = False
-    #         # maybe we need to deactivate the contact user(s) ?
-    #         client.save()
+        try:
+            client.delete()
 
-    #         return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response(status=status.STATUS_202_ACCEPTED)
 
-    #     except PermissionError:
-    #         return Response(status=status.HTTP_403_FORBIDDEN)
+        except PermissionError:
+
+            return Response(status=status.HTTP_403_FORBIDDEN)
