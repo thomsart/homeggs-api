@@ -31,6 +31,8 @@ from ..serializers import (
     ShopSerializer,
     TaxSerializer,
 )
+from .company import CompanyList, CompanyDetail
+from .salary import SalaryList, SalaryDetail
 
 __all__ = [
     "APIView",
@@ -62,5 +64,8 @@ __all__ = [
     "CreateSalarySerializer", "SalarySerializer",
     "SavingSerializer",
     "ShopSerializer",
-    "TaxSerializer"
+    "TaxSerializer",
+
+    "CompanyList", "CompanyDetail",
+    "SalaryList", "SlaryDetail",
 ]
