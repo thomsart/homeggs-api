@@ -4,9 +4,9 @@ Module for company views.
 
 from . import (
     APIView, permissions, Response, status, 
+    IsSuperuser, IsActive , 
     Company, CreateCompanySerializer, UpdateCompanySerializer, CompanySerializer
 )
-from ..permissions import IsSuperuser, IsActive
 
 
 class CompanyList(APIView):

@@ -6,6 +6,7 @@ from django.http import Http404
 
 from account.models import User
 from account.serializers import UserSerializer
+from account.permissions import IsActive, IsSuperuser
 
 from ..models import (
     Company,
@@ -35,8 +36,9 @@ __all__ = [
     "status",
     "Http404",
 
-    "User",
-    "UserSerializer",
+    "User", 
+    "UserSerializer", 
+    'IsActive', 'IsSuperuser', 
 
     "Company",
     "ExceptionalExpense",

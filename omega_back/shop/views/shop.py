@@ -4,6 +4,6 @@ Module for shop views.
 
 from . import (
     APIView, permissions, Response, status, 
-    Shop
+    IsSuperuser, IsActive , 
+    Shop, 
 )
-from ..permissions import IsSuperuser, IsActive

@@ -4,6 +4,6 @@ Module for product views.
 
 from . import (
     APIView, permissions, Response, status, 
-    Product
+    IsSuperuser, IsActive , 
+    Product, 
 )
-from ..permissions import IsSuperuser, IsActive

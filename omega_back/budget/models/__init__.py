@@ -1,4 +1,5 @@
 from django.db import models
+
 from account.models import User
 
 from .company import Company
@@ -12,7 +13,9 @@ from .tax import Tax
 
 __all__ = [
     "models", 
+
     "User", 
+
     "Company", 
     "ExceptionalExpense", 
     "Extra", 

@@ -4,9 +4,9 @@ Module for salary views.
 
 from . import (
     APIView, permissions, Response, status, Http404, 
+    IsSuperuser, IsActive, 
     Salary, CreateSalarySerializer, SalarySerializer
 )
-from ..permissions import IsSuperuser, IsActive
 
 
 class SalaryList(APIView):
