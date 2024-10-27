@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'budget',
     'desk',
     'event',
+    'shop',
 ]
 
 MIDDLEWARE = [

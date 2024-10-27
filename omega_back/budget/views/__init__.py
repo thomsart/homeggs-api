@@ -8,27 +8,21 @@ from account.models import User
 from account.serializers import UserSerializer
 
 from ..models import (
-    Coast,
     Company,
     ExceptionalExpense,
     Extra,
     FeeOrExpense,
-    Product,
     Salary,
     Saving,
-    Shop,
     Tax
 )
 from ..serializers import (
-    CoastSerializer,
     CreateCompanySerializer, UpdateCompanySerializer, CompanySerializer,
     ExceptionalExpenseSerializer,
     ExtraSerializer,
     FeeOrExpenseSerializer,
-    ProductSerializer,
     CreateSalarySerializer, SalarySerializer,
     SavingSerializer,
-    ShopSerializer,
     TaxSerializer,
 )
 from .company import CompanyList, CompanyDetail
@@ -44,28 +38,22 @@ __all__ = [
     "User",
     "UserSerializer",
 
-    "Coast",
     "Company",
     "ExceptionalExpense",
     "Extra",
     "FeeOrExpense",
-    "Product",
     "Salary",
     "Saving",
-    "Shop",
     "Tax",
 
-    "CoastSerializer", 
     "CreateCompanySerializer", "UpdateCompanySerializer", "CompanySerializer",
     "ExceptionalExpenseSerializer",
     "ExtraSerializer",
     "FeeOrExpenseSerializer",
-    "ProductSerializer",
     "CreateSalarySerializer", "SalarySerializer",
     "SavingSerializer",
-    "ShopSerializer",
     "TaxSerializer",
 
     "CompanyList", "CompanyDetail",
-    "SalaryList", "SlaryDetail",
+    "SalaryList", "SalaryDetail",
 ]
