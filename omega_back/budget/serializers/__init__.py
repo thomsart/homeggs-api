@@ -9,7 +9,7 @@ from .company import CreateCompanySerializer, UpdateCompanySerializer, CompanySe
 from ..models import ExceptionalExpense 
 from .exceptional_expense import ExceptionalExpenseSerializer, CreateExceptionalExpenseSerializer, UpdateExceptionalExpenseSerializer
 from ..models import Extra
-from .extra import ExtraSerializer
+from .extra import ExtraSerializer, CreateExtraSerializer, UpdateExtraSerializer
 from ..models import FeeOrExpense
 from .fee_or_expense import FeeOrExpenseSerializer
 from ..models import Salary
@@ -34,7 +34,7 @@ __all__ = [
     "CompanySerializer", 
     "ExceptionalExpense", 
     "ExceptionalExpenseSerializer", "CreateExceptionalExpenseSerializer", "UpdateExceptionalExpenseSerializer", 
-    "Extra", 
+    "Extra", "CreateExtraSerializer", "UpdateExtraSerializer", 
     "ExtraSerializer", 
     "FeeOrExpense", 
     "FeeOrExpenseSerializer", 
