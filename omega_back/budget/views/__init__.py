@@ -19,7 +19,7 @@ from ..models import (
 )
 from ..serializers import (
     CreateCompanySerializer, UpdateCompanySerializer, CompanySerializer,
-    ExceptionalExpenseSerializer,
+    ExceptionalExpenseSerializer, CreateExceptionalExpenseSerializer, UpdateExceptionalExpenseSerializer, 
     ExtraSerializer,
     FeeOrExpenseSerializer,
     CreateSalarySerializer, SalarySerializer,
@@ -28,6 +28,7 @@ from ..serializers import (
 )
 from .company import CompanyList, CompanyDetail
 from .salary import SalaryList, SalaryDetail
+from .exceptional_expense import ExceptionalExpenseList, ExceptionalExpenseDetail
 
 __all__ = [
     "APIView",
@@ -41,7 +42,7 @@ __all__ = [
     'IsActive', 'IsSuperuser', 
 
     "Company",
-    "ExceptionalExpense",
+    "ExceptionalExpense", "CreateExceptionaleExpenseSerializer", "UpdateExceptionalExpenseSerializer", 
     "Extra",
     "FeeOrExpense",
     "Salary",
@@ -49,7 +50,7 @@ __all__ = [
     "Tax",
 
     "CreateCompanySerializer", "UpdateCompanySerializer", "CompanySerializer",
-    "ExceptionalExpenseSerializer",
+    "ExceptionalExpenseSerializer", "CreateExceptionalExpense",
     "ExtraSerializer",
     "FeeOrExpenseSerializer",
     "CreateSalarySerializer", "SalarySerializer",
@@ -58,4 +59,5 @@ __all__ = [
 
     "CompanyList", "CompanyDetail",
     "SalaryList", "SalaryDetail",
+    "ExceptionalExpenseList", "ExceptionalExpenseDetail",
 ]

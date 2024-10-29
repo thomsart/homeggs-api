@@ -7,10 +7,10 @@ from . import serializers, UserSerializer, User, Company
 
 class CreateCompanySerializer(serializers.Serializer):
     who = UserSerializer()
-    name = serializers.CharField(max_length=20)
+    name = serializers.CharField(max_length=20, allow_null=False)
 
     def create(self, validated_data):
-        
+
         who = User.objects.get(id=validated_data['who'])
 
         if who:
@@ -22,7 +22,7 @@ class CreateCompanySerializer(serializers.Serializer):
 class UpdateCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['name']
+        fields = ['id', 'name']
 
 
 class CompanySerializer(serializers.ModelSerializer):

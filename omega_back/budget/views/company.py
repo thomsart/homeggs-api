@@ -3,15 +3,17 @@ Module for company views.
 """
 
 from . import (
-    APIView, permissions, Response, status, 
+    APIView, permissions, Response, status, Http404, 
     IsSuperuser, IsActive , 
     Company, CreateCompanySerializer, UpdateCompanySerializer, CompanySerializer
 )
 
 
 class CompanyList(APIView):
-    """  
-    List all companies, or create a new one.
+    """
+    App: budget.\n
+    View Type: APIView.\n
+    List all companies, or create a new one.\n
     """
 
     permission_classes = [
@@ -44,7 +46,9 @@ class CompanyList(APIView):
 
 class CompanyDetail(APIView):
     """
-    Retrieve, update or delete a client.
+    App: budget.\n
+    View Type: APIView.\n
+    Retrieve, update or delete a company.\n
     """
 
     permission_classes = [
@@ -86,10 +90,10 @@ class CompanyDetail(APIView):
 
     def delete(self, request, pk, format=None):
 
-        client = self.get_object(pk)
+        company = self.get_object(pk)
 
         try:
-            client.delete()
+            company.delete()
 
             return Response(status=status.STATUS_202_ACCEPTED)
 

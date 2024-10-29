@@ -6,6 +6,9 @@ from .managers import UserManager
 
 
 class User(AbstractUser):
+    """
+    User model in account app.
+    """
 
     username = None
     email = models.EmailField('email address', unique=True)
