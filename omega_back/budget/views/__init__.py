@@ -24,7 +24,7 @@ from ..serializers import (
     FeeOrExpenseSerializer, CreateFeeOrExpenseSerializer, UpdateFeeOrExpenseSerializer, 
     CreateSalarySerializer, UpdateSalarySerializer, SalarySerializer,
     CreateSavingSerializer, UpdateSavingSerializer, SavingSerializer,
-    CreateTaxSerializer, UpdateTaxSerializer, TaxSerializer,
+    TaxSerializer,CreateTaxSerializer, UpdateTaxSerializer,
 )
 from .company import CompanyList, CompanyDetail
 from .exceptional_expense import ExceptionalExpenseList, ExceptionalExpenseDetail
