@@ -21,45 +21,52 @@ from ..serializers import (
     CreateCompanySerializer, UpdateCompanySerializer, CompanySerializer,
     ExceptionalExpenseSerializer, CreateExceptionalExpenseSerializer, UpdateExceptionalExpenseSerializer, 
     ExtraSerializer, CreateExtraSerializer, UpdateExtraSerializer, 
-    FeeOrExpenseSerializer,
-    CreateSalarySerializer, SalarySerializer,
-    SavingSerializer,
-    TaxSerializer,
+    FeeOrExpenseSerializer, CreateFeeOrExpenseSerializer, UpdateFeeOrExpenseSerializer, 
+    CreateSalarySerializer, UpdateSalarySerializer, SalarySerializer,
+    CreateSavingSerializer, UpdateSavingSerializer, SavingSerializer,
+    CreateTaxSerializer, UpdateTaxSerializer, TaxSerializer,
 )
 from .company import CompanyList, CompanyDetail
-from .salary import SalaryList, SalaryDetail
 from .exceptional_expense import ExceptionalExpenseList, ExceptionalExpenseDetail
 from .extra import ExtraList, ExtraDetail
+from .fee_or_expense import FeeOrExpenseList, FeeOrExpenseDetail
+from .salary import SalaryList, SalaryDetail
+from .saving import SavingList, SavingDetail
+from .tax import TaxList, TaxDetail
+
 
 __all__ = [
-    "APIView",
-    "permissions",
-    "Response",
-    "status",
-    "Http404",
+    "APIView", 
+    "permissions", 
+    "Response", 
+    "status", 
+    "Http404", 
 
     "User", 
     "UserSerializer", 
     'IsActive', 'IsSuperuser', 
 
-    "Company",
-    "ExceptionalExpense", "CreateExceptionaleExpenseSerializer", "UpdateExceptionalExpenseSerializer", 
-    "Extra", "CreateExtraSerializer", "UpdateExtraSerializer", 
-    "FeeOrExpense",
-    "Salary",
-    "Saving",
-    "Tax",
+    "Company", 
+    "ExceptionalExpense", 
+    "Extra", 
+    "FeeOrExpense", 
+    "Salary", 
+    "Saving", 
+    "Tax", 
 
-    "CreateCompanySerializer", "UpdateCompanySerializer", "CompanySerializer",
-    "ExceptionalExpenseSerializer", "CreateExceptionalExpense",
-    "ExtraSerializer",
-    "FeeOrExpenseSerializer",
-    "CreateSalarySerializer", "SalarySerializer",
-    "SavingSerializer",
-    "TaxSerializer",
+    "CompanySerializer", "CreateCompanySerializer", "UpdateCompanySerializer", 
+    "ExceptionalExpenseSerializer", "CreateExceptionalExpenseSerializer", "UpdateExceptionalExpenseSerializer", 
+    "ExtraSerializer", "CreateExtraSerializer", "UpdateExtraSerializer", 
+    "FeeOrExpenseSerializer", "CreateFeeOrExpenseSerializer", "UpdateFeeOrExpenseSerializer", 
+    "SalarySerializer", "UpdateSalarySerializer", "CreateSalarySerializer", 
+    "SavingSerializer", "CreateSavingSerializer", "UpdateSavingSerializer", 
+    "TaxSerializer", "CreateTaxSerializer", "UpdateTaxSerializer", 
 
-    "CompanyList", "CompanyDetail",
-    "SalaryList", "SalaryDetail",
-    "ExceptionalExpenseList", "ExceptionalExpenseDetail",
-    "ExtraList", "ExtraDetail"
+    "CompanyList", "CompanyDetail", 
+    "ExceptionalExpenseList", "ExceptionalExpenseDetail", 
+    "ExtraList", "ExtraDetail", 
+    "FeeOrExpenseList", "FeeOrExpenseDetail", 
+    "SalaryList", "SalaryDetail", 
+    "SavingList", "SavingDetail", 
+    "TaxList", "TaxDetail", 
 ]

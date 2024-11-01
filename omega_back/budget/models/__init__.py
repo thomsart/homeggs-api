@@ -22,5 +22,5 @@ __all__ = [
     "FeeOrExpense", 
     "Salary", 
     "Saving", 
-    "Tax"
+    "Tax",
 ]

@@ -5,7 +5,7 @@ Module for salary views.
 from . import (
     APIView, permissions, Response, status, Http404, 
     IsSuperuser, IsActive, 
-    Salary, CreateSalarySerializer, SalarySerializer
+    Salary, CreateSalarySerializer, UpdateSalarySerializer, SalarySerializer
 )
 
 
@@ -44,7 +44,7 @@ class SalaryList(APIView):
 
 class SalaryDetail(APIView):
     """
-    Retrieve, update or delete a client.
+    Retrieve, update or delete a salary.
     """
 
     permission_classes = [
@@ -71,30 +71,29 @@ class SalaryDetail(APIView):
         return Response(serializer.data)
 
 
-    # def put(self, request, pk, format=None):
+    def put(self, request, pk, format=None):
 
-    #     client = self.get_object(pk)
-    #     serializer = UpdateClientSerializer(client, data=request.data)
+        salary = self.get_object(pk)
+        salary = UpdateSalarySerializer(salary, data=request.data)
 
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         client = HeavyClientSerializer(client)
+        if salary.is_valid():
+            salary.save()
+            serializer = SalarySerializer(salary)
 
-    #         return Response(client.data)
+            return Response(serializer.data)
 
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(salary.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    # def delete(self, request, pk, format=None):
+    def delete(self, request, pk, format=None):
 
-    #     client = self.get_object(pk)
+        salary = self.get_object(pk)
 
-    #     try:
-    #         client.is_still_client = False
-    #         # maybe we need to deactivate the contact user(s) ?
-    #         client.save()
+        try:
+            salary.delete()
 
-    #         return Response(status=status.HTTP_204_NO_CONTENT)
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
-    #     except PermissionError:
-    #         return Response(status=status.HTTP_403_FORBIDDEN)
+        except PermissionError:
+
+            return Response(status=status.HTTP_403_FORBIDDEN)

@@ -2,8 +2,9 @@
 Module for Salary Serializer
 """
 
-from . import serializers, UserSerializer, CompanySerializer, User, Company, Salary
-
+from . import (
+    serializers, UserSerializer, CompanySerializer, User, Company, Salary
+)
 
 class CreateSalarySerializer(serializers.Serializer):
     who = UserSerializer()
@@ -19,6 +20,12 @@ class CreateSalarySerializer(serializers.Serializer):
             salary = Salary.objects.create(who=who.id, company=company.id, amount=validated_data['amount'])
 
             return salary
+
+
+class UpdateSalarySerializer(serializers.ModelSerializer):
+    class Salary:
+        model = Salary
+        fields = ["id", "amount"]
 
 
 class SalarySerializer(serializers.ModelSerializer):
