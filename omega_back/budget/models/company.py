@@ -11,5 +11,5 @@ class Company(models.Model):
     """
 
     who = models.ForeignKey(User, on_delete=models.PROTECT)
-    name = models.CharField(max_length=20, null=False)
-    created_date = models.DateField(auto_now_add=True, null=False) # date set at creation only
+    name = models.CharField(max_length=20)
+    created_date = models.DateField(auto_now_add=True) # date set at creation only

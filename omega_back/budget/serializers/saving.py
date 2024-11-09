@@ -9,8 +9,8 @@ from .tax import TaxSerializer
 
 class CreateSavingSerializer(serializers.Serializer):
     display_order = serializers.IntegerField(default=0, allow_null=False)
-    tax = TaxSerializer()
-    fee_or_expense = FeeOrExpenseSerializer()
+    tax = TaxSerializer(allow_null=True)
+    fee_or_expense = FeeOrExpenseSerializer(allow_null=True)
     name = serializers.CharField(max_length=30, allow_null=False)
     active = serializers.BooleanField(default=True, allow_null=False)
     automatically_deducted = serializers.BooleanField(default=True, allow_null=False)
