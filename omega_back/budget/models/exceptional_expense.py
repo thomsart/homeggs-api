@@ -15,5 +15,5 @@ class ExceptionalExpense(models.Model):
 
     name = models.CharField(max_length=30, unique=True)
     note = models.TextField(max_length=100, null=True)
-    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0) # amount on month
+    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0.0) # amount on month
     created_date = models.DateField(auto_now_add=True) # date set at creation only

@@ -13,7 +13,7 @@ class Tax(models.Model):
     display_order = models.SmallIntegerField(default=0) # used when the user want to organize the display rank
     name = models.CharField(max_length=30, unique=True)
     active = models.BooleanField(default=True) # probably not applied every years cause of your situation
-    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0) # amount on month
+    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0.0) # amount on month
     automatically_deducted = models.BooleanField(default=True) # automated monthly bank fees
     created_date = models.DateField(auto_now_add=True) # date set at creation only
 

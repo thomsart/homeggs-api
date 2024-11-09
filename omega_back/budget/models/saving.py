@@ -34,11 +34,11 @@ class Saving(models.Model):
     name = models.CharField(max_length=30, unique=True)
     active = models.BooleanField(default=True) # you may want to stop to save cause of something
     automatically_deducted = models.BooleanField(default=True) # automated monthly bank fees
-    amount = models.DecimalField(max_digits=8, decimal_places=2, default=0) # the actual amount since you saved
+    amount = models.DecimalField(max_digits=8, decimal_places=2, default=0.0) # the actual amount since you saved
     cash = models.BooleanField(default=False) # amount you want to take off from your bank account
     start_month = models.IntegerField(choices=Month, default=0) # the month that you are supposed to pay or supposed to start to save
-    year_amount = models.DecimalField(max_digits=7, decimal_places=2, default=0) # the total amount expected or due on a year
-    due_amount = models.DecimalField(max_digits=7, decimal_places=2, default=0) # in considering the amount on a year and the actual amount 
+    year_amount = models.DecimalField(max_digits=7, decimal_places=2, default=0.0) # the total amount expected or due on a year
+    due_amount = models.DecimalField(max_digits=7, decimal_places=2, default=0.0) # in considering the amount on a year and the actual amount 
     created_date = models.DateField(auto_now_add=True) # date set at creation only
     modified_date = models.DateField(auto_now=True) # date set at creation and on changed
 
