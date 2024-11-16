@@ -11,8 +11,8 @@ class UserAdmin(UserAdmin):
     form = UserChangeForm
     model = User
 
-    list_display = ('email', 'first_name', 'last_name', 'is_staff')
-    list_filter = ('email', 'first_name', 'last_name', 'is_staff')
+    list_display = ('email', 'first_name', 'last_name', 'is_superuser', 'is_staff', 'is_active')
+    list_filter = ('email', 'first_name', 'last_name', 'is_superuser', 'is_staff', 'is_active')
     fieldsets = (
         ('Logs', {'fields': ('email', 'password')}),
         ('User', {'fields': (
@@ -28,7 +28,7 @@ class UserAdmin(UserAdmin):
             'fields': ('email', 'password1', 'password2', 'is_staff', 'is_active'),
         }),
     )
-    search_fields = ('email', 'first_name', 'last_name')
+    search_fields = ('email', 'first_name', 'last_name', 'phone')
     ordering = ('first_name', 'last_name')
 
 

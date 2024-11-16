@@ -11,6 +11,18 @@ class IsSuperuser(permissions.BasePermission):
     def has_permission(self, request, view):
         return request.user.is_superuser
 
+
+class IsStaff(permissions.BasePermission):
+    """
+    App: account.\n
+    Model: User.\n
+    Permission: check if the user belong to the Admin team.\n
+    """
+
+    def has_permission(self, request, view):
+        return request.user.is_staff
+
+
 class IsActive(permissions.BasePermission):
     """
     App: account.\n
@@ -19,5 +31,4 @@ class IsActive(permissions.BasePermission):
     """
 
     def has_permission(self, request, view):
-
         return request.user.is_active

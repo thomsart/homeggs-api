@@ -12,8 +12,8 @@ class Product(models.Model):
 
     name = models.CharField(max_length=50, unique=True, null=False)
     quantity = models.SmallIntegerField(default=0)
-    kilo = models.DecimalField(max_digits=5, decimal_places=3, default=0)
-    litre = models.DecimalField(max_digits=5, decimal_places=3, default=0)
+    kilo = models.DecimalField(max_digits=5, decimal_places=3, default=0.0)
+    litre = models.DecimalField(max_digits=5, decimal_places=3, default=0.0)
     supply = models.DateField(auto_now_add=True, null=False) # date set at creation only
     frequency = models.SmallIntegerField(default=0) # the frequency of consumption per date bought and quatity
     missing = models.BooleanField(default=False) # if the product is missing at home

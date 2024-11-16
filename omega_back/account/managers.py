@@ -46,8 +46,8 @@ class UserManager(BaseUserManager):
         #     raise ValueError('The field must be set')
 
         return self.create_user(
-            first_name='John',
-            last_name='Doe',
+            first_name='Thomas',
+            last_name='Cottenflard',
             email=email,
             password=password,
             phone='undefined',
