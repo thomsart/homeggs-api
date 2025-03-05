@@ -15,7 +15,8 @@ class User(AbstractUser):
     phone = models.CharField(max_length=15)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = [] # cette variable donne les champs supplementaires 
+                         # obligatoires lors de la creation du superuser 
 
     objects = UserManager()
 

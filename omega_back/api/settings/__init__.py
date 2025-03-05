@@ -119,8 +119,31 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 SIMPLE_JWT = {
    'AUTH_HEADER_TYPES': ('JWT',),
+}
+
+# django-cors-headers
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173"] # be carefull of the https
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
+DJOSER = {
+    'LOGIN_FIELD': 'email', # Permet la connexion avec l'email
+    'SERIALIZERS': {
+        'user': 'account.serializers.UserSerializer',  # Sérialiseur pour les détails utilisateur
+        'user_create': 'account.serializers.CreateUserSerializer',  # Sérialiseur pour la création
+        'user_update': 'account.serializers.UpdateUserSerializer',  # Sérialiseur pour la mise à jour
+    },
 }

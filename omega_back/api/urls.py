@@ -18,18 +18,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-
-from account.urls import account_urlpatterns
 from desk.urls import desk_urlpatterns
 from event.urls import event_urlpatterns
 from shop.urls import shop_urlpatterns
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('account/', include('account.urls')),
 ]
 
-urlpatterns += account_urlpatterns
 urlpatterns += desk_urlpatterns
 urlpatterns += event_urlpatterns
 urlpatterns += shop_urlpatterns
