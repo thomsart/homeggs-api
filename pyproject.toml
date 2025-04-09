@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "omega-back"
+name = "homeggs-api"
 version = "0.1.0"
 description = ""
 authors = ["thomas <psychoid@hotmail.fr>"]
