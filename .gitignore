@@ -1,4 +1,4 @@
 __pycache__/
-omega_back/api/settings/local.py
-omega_back/api/db.sqlite3
+homeggs_api/api/settings/local.py
+homeggs_api/api/db.sqlite3
 
