@@ -1,4 +1,4 @@
 __pycache__/
 homeggs_api/api/settings/local.py
 homeggs_api/api/db.sqlite3
-
+superuser.txt
