@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from budget.urls import budget_urlpatterns
 from desk.urls import desk_urlpatterns
 from event.urls import event_urlpatterns
 from shop.urls import shop_urlpatterns
@@ -29,6 +30,7 @@ urlpatterns = [
     path('account/', include('account.urls')),
 ]
 
+urlpatterns += budget_urlpatterns
 urlpatterns += desk_urlpatterns
 urlpatterns += event_urlpatterns
 urlpatterns += shop_urlpatterns

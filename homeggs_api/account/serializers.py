@@ -1,3 +1,7 @@
+"""
+Module for account Serializers
+"""
+
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, authenticate
 
@@ -24,7 +28,7 @@ class CreateUserSerializer(serializers.Serializer):
 class UpdateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "first_name", "last_name", "email", "phone"]
+        fields = ["first_name", "last_name", "email", "phone"]
 
 
 class LoginUserSerializer(serializers.Serializer):

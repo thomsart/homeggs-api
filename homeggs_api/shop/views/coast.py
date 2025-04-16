@@ -1,5 +1,5 @@
 """
-Module for coast views.
+Module of shop/views/coast.py
 """
 
 from . import (

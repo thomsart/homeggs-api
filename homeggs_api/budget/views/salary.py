@@ -1,5 +1,5 @@
 """
-Module for salary views.
+Module of budget/views/salary.py
 """
 
 from . import (
@@ -80,7 +80,21 @@ class SalaryDetail(APIView):
             salary.save()
             serializer = SalarySerializer(salary)
 
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(salary.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        salary = self.get_object(pk)
+        salary = UpdateSalarySerializer(salary, data=request.data, partial=True)
+
+        if salary.is_valid():
+            salary.save()
+            serializer = SalarySerializer(salary)
+
+            return Response(serializer.data, status=status.HTTP_200_OK)
 
         return Response(salary.errors, status=status.HTTP_400_BAD_REQUEST)
 

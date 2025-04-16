@@ -1,5 +1,5 @@
 """
-Module for Company Serializer
+Module of budget/serializers/company.py
 """
 
 from . import serializers, UserSerializer, User, Company
@@ -22,7 +22,7 @@ class CreateCompanySerializer(serializers.Serializer):
 class UpdateCompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['id', 'name']
+        fields = ['name']
 
 
 class CompanySerializer(serializers.ModelSerializer):

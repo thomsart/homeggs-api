@@ -1,5 +1,5 @@
 """
-Module for Tax Model.
+Module of budget/models/tax.py
 """
 
 from . import models

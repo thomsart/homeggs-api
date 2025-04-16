@@ -1,5 +1,5 @@
 """
-Module for fee or expense views.
+Module of budget/views/fee_or_expense.py
 """
 
 from . import (
@@ -83,7 +83,23 @@ class FeeOrExpenseDetail(APIView):
             serializer.save()
             fee_or_expense = FeeOrExpenseSerializer(fee_or_expense)
 
-            return Response(fee_or_expense.data)
+            return Response(fee_or_expense.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        fee_or_expense = self.get_object(pk)
+        serializer = UpdateFeeOrExpenseSerializer(
+                        fee_or_expense, data=request.data, partial=True
+                    )
+
+        if serializer.is_valid():
+            serializer.save()
+            fee_or_expense = FeeOrExpenseSerializer(fee_or_expense)
+
+            return Response(fee_or_expense.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

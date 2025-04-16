@@ -1,5 +1,5 @@
 """
-Module for company views.
+Module of budget/views/company.py
 """
 
 from . import (
@@ -83,7 +83,21 @@ class CompanyDetail(APIView):
             serializer.save()
             company = CompanySerializer(company)
 
-            return Response(company.data)
+            return Response(company.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        company = self.get_object(pk)
+        serializer = UpdateCompanySerializer(company, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            company = CompanySerializer(company)
+
+            return Response(company.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

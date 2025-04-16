@@ -1,5 +1,5 @@
 """
-Module for Shop Serializer
+Module of shop/serializers/shop.py
 """
 
 from . import serializers, Shop

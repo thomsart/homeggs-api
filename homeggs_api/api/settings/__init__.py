@@ -143,7 +143,7 @@ DJOSER = {
     'LOGIN_FIELD': 'email', # Permet la connexion avec l'email
     'SERIALIZERS': {
         'user': 'account.serializers.UserSerializer',  # Sérialiseur pour les détails utilisateur
-        'current_user': 'account.serializers.UserSerializer',
+        'current_user': 'account.serializers.UserSerializer', # Serializer for /users/me endpoint
         'user_create': 'account.serializers.CreateUserSerializer',  # Sérialiseur pour la création
         'user_update': 'account.serializers.UpdateUserSerializer',  # Sérialiseur pour la mise à jour
     },

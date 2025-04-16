@@ -1,8 +1,21 @@
 """
-Module for Product Serializer
+Module of shop/serializers/product.py
 """
 
 from . import serializers, Product
+
+
+class CreateProductSerializer(serializers.Serializer):
+    ...
+
+
+class UpdateProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = [
+            'name', 'quantity', 'kilo', 'litre', 'supply', 'frequency',
+            'missing', 'url', 'photo'
+        ]
 
 
 class ProductSerializer(serializers.ModelSerializer):

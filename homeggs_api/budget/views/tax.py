@@ -1,7 +1,6 @@
 """
-Module for tax views.
+Module of budget/views/tax.py
 """
-
 
 from . import (
     APIView, permissions, Response, status, Http404, 
@@ -84,7 +83,21 @@ class TaxDetail(APIView):
             serializer.save()
             tax = TaxSerializer(tax)
 
-            return Response(tax.data)
+            return Response(tax.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        tax = self.get_object(pk)
+        serializer = UpdateTaxSerializer(tax, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            tax = TaxSerializer(tax)
+
+            return Response(tax.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

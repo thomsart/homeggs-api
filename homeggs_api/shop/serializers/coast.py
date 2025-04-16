@@ -1,5 +1,5 @@
 """
-Module for Coast Serializer
+Module of shop/serializers/coast.py
 """
 
 from . import serializers, Coast

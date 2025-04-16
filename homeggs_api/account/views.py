@@ -1,3 +1,7 @@
+"""
+Module for account views
+"""
+
 from django.contrib.auth import get_user_model, login, logout
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.views import APIView

@@ -1,5 +1,5 @@
 """
-Module for Fee or Expense Serializer
+Module of budget/serializers/fee_or_expense.py
 """
 
 from . import serializers, FeeOrExpense
@@ -15,7 +15,7 @@ class CreateFeeOrExpenseSerializer(serializers.Serializer):
 class UpdateFeeOrExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = FeeOrExpense
-        fields = ["id", "display_order", "name", "active", "amount"]
+        fields = ["display_order", "name", "active", "amount"]
 
 
 class FeeOrExpenseSerializer(serializers.ModelSerializer):

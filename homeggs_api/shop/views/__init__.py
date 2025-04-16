@@ -5,6 +5,7 @@ from rest_framework import status
 from django.http import Http404
 
 from account.models import User
+from account.permissions import IsSuperuser, IsStaff, IsActive
 from account.serializers import UserSerializer
 
 from ..models import (
@@ -14,9 +15,13 @@ from ..models import (
 )
 from ..serializers import (
     CoastSerializer,
-    ProductSerializer,
+    ProductSerializer, CreateProductSerializer, UpdateProductSerializer, 
     ShopSerializer,
 )
+# from .coast import CoastList, CoastDetail
+from .product import ProductList, ProductDetail
+# from .shop import ShopList, ShopDetail
+
 
 __all__ = [
     "APIView",
@@ -25,7 +30,8 @@ __all__ = [
     "status",
     "Http404",
 
-    "User",
+    "User", 
+    "IsSuperuser", "IsStaff", "IsActive", 
     "UserSerializer",
 
     "Coast",
@@ -33,6 +39,8 @@ __all__ = [
     "Shop",
 
     "CoastSerializer", 
-    "ProductSerializer",
+    "ProductSerializer", "CreateProductSerializer", "UpdateProductSerializer", 
     "ShopSerializer",
+
+    "ProductList", "ProductDetail",
 ]

@@ -1,5 +1,5 @@
 """
-Module for Company Model.
+Module of budget/models/company.py
 """
 
 from . import models, User

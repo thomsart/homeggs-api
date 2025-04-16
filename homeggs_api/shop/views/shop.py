@@ -1,5 +1,5 @@
 """
-Module for shop views.
+Module of shop/views/shop.py
 """
 
 from . import (

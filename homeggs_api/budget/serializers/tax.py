@@ -1,5 +1,5 @@
 """
-Module for Tax Serializer
+Module of budget/serializers/tax.py
 """
 
 from . import (
@@ -18,7 +18,7 @@ class CreateTaxSerializer(serializers.Serializer):
 class UpdateTaxSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tax
-        fields = ["id", "display_order", "name", "active", "amount", "automatically_deducted"]
+        fields = ["display_order", "name", "active", "amount", "automatically_deducted"]
 
 
 class TaxSerializer(serializers.ModelSerializer):

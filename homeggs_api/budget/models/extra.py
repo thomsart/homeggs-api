@@ -1,5 +1,5 @@
 """
-Module for Extra Model.
+Module of of budget/models/extra.py
 """
 
 from . import models, User

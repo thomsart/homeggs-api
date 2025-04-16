@@ -1,5 +1,5 @@
 """
-Module for exceptional expense views.
+Module of budget/views/exceptional_expense.py
 """
 
 from . import (
@@ -82,7 +82,23 @@ class ExceptionalExpenseDetail(APIView):
             serializer.save()
             exceptional_expense = ExceptionalExpenseSerializer(exceptional_expense)
 
-            return Response(exceptional_expense.data)
+            return Response(exceptional_expense.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        exceptional_expense = self.get_object(pk)
+        serializer = UpdateExceptionalExpenseSerializer(
+                        exceptional_expense, data=request.data, partial=True
+                    )
+
+        if serializer.is_valid():
+            serializer.save()
+            exceptional_expense = ExceptionalExpenseSerializer(exceptional_expense)
+
+            return Response(exceptional_expense.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

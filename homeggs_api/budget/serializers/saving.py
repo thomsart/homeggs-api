@@ -1,5 +1,5 @@
 """
-Module for Saving Serializer.
+Module of budget/serializers/saving.py
 """
 
 from . import (
@@ -25,7 +25,7 @@ class UpdateSavingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Saving
         fields = [
-            "id", "display_order", "active", "automatically_deducted", 
+            "display_order", "active", "automatically_deducted", 
             "amount", "cash", "start_month", "year_amount", "due_amount"
         ]
 

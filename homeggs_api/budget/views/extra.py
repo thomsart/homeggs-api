@@ -1,5 +1,5 @@
 """
-Module for extra views.
+Module of budget/views/extra.py
 """
 
 from . import (
@@ -83,7 +83,21 @@ class ExtraDetail(APIView):
             serializer.save()
             extra = ExtraSerializer(extra)
 
-            return Response(extra.data)
+            return Response(extra.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        extra = self.get_object(pk)
+        serializer = UpdateExtraSerializer(extra, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            extra = ExtraSerializer(extra)
+
+            return Response(extra.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

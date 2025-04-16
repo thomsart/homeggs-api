@@ -1,5 +1,5 @@
 """
-Module for Fee or Expense Model.
+Module of budget/models/fee_or_expense.py
 """
 
 from . import models

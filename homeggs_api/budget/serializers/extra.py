@@ -1,5 +1,5 @@
 """
-Module for Extra Serializer
+Module of budget/serializers/extra.py
 """
 
 from . import serializers, Extra, UserSerializer
@@ -14,7 +14,7 @@ class CreateExtraSerializer(serializers.Serializer):
 class UpdateExtraSerializer(serializers.ModelSerializer):
     class Meta:
         model = Extra
-        fields = ['id', 'name', 'amount']
+        fields = ['name', 'amount']
 
 
 class ExtraSerializer(serializers.ModelSerializer):

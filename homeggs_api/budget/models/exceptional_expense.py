@@ -1,5 +1,5 @@
 """
-Module for Exceptional Expense Model.
+Module of budget/models/exceptional_expense.py
 """
 
 from . import models

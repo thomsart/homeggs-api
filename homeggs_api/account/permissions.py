@@ -1,3 +1,7 @@
+"""
+Module for account permissions
+"""
+
 from rest_framework import permissions
 
 

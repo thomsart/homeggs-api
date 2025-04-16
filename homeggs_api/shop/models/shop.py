@@ -1,5 +1,5 @@
 """
-Module for Shop Model.
+Module of shop/models/shop.py
 """
 
 from . import models

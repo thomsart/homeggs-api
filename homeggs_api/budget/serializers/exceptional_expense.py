@@ -1,5 +1,5 @@
 """
-Module for Exceptional Expense Serializer
+Module for budget/serializers/exceptional_expense.py
 """
 
 from . import serializers, ExceptionalExpense
@@ -14,7 +14,7 @@ class CreateExceptionalExpenseSerializer(serializers.Serializer):
 class UpdateExceptionalExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExceptionalExpense
-        fields = ['id', 'name', 'note', 'amount']
+        fields = ['name', 'note', 'amount']
 
 
 class ExceptionalExpenseSerializer(serializers.ModelSerializer):

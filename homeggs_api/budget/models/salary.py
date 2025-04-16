@@ -1,5 +1,5 @@
 """
-Module for Salary Model.
+Module of budget/models/salary.py
 """
 
 from . import models, User, Company

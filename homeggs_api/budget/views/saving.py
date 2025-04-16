@@ -1,7 +1,6 @@
 """
-Module for saving views.
+Module of budget/views/saving.py
 """
-
 
 from . import (
     APIView, permissions, Response, status, Http404, 
@@ -84,7 +83,21 @@ class SavingDetail(APIView):
             serializer.save()
             saving = SavingSerializer(saving)
 
-            return Response(saving.data)
+            return Response(saving.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    def patch(self, request, pk, format=None):
+
+        saving = self.get_object(pk)
+        serializer = UpdateSavingSerializer(saving, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            saving = SavingSerializer(saving)
+
+            return Response(saving.data, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

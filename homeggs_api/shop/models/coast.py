@@ -1,5 +1,5 @@
 """
-Module for Coast Model.
+Module of shop/models/coast.py
 """
 
 from . import models

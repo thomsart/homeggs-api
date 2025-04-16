@@ -1,5 +1,5 @@
 """
-Module for Salary Serializer
+Module of budget/serializers/salary.py
 """
 
 from . import (
@@ -25,7 +25,7 @@ class CreateSalarySerializer(serializers.Serializer):
 class UpdateSalarySerializer(serializers.ModelSerializer):
     class Salary:
         model = Salary
-        fields = ["id", "amount"]
+        fields = ["amount"]
 
 
 class SalarySerializer(serializers.ModelSerializer):

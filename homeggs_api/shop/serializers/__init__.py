@@ -7,7 +7,7 @@ from account.serializers import UserSerializer
 from ..models import Coast
 from .coast import CoastSerializer
 from ..models import Product
-from .product import ProductSerializer
+from .product import ProductSerializer, CreateProductSerializer, UpdateProductSerializer
 from ..models import Shop
 from .shop import ShopSerializer
 
@@ -22,7 +22,7 @@ __all__ = [
     "Coast", 
     "CoastSerializer", 
     "Product", 
-    "ProductSerializer",  
+    "ProductSerializer", "CreateProductSerializer", "UpdateProductSerializer",  
     "Shop", 
     "ShopSerializer", 
 ]
