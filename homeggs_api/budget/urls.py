@@ -17,7 +17,9 @@ from .views import (
     TaxList, TaxDetail,
 )
 
-budget_urlpatterns = [
+app_name = 'budget'
+
+urlpatterns = [
     path('companies/', CompanyList.as_view(), name='company-list'),
     path('companies/<int:pk>/', CompanyDetail.as_view(), name='company-detail'),
     path('exceptional-expenses/', ExceptionalExpenseList.as_view(), name='exceptional-expense-list'),
@@ -34,4 +36,4 @@ budget_urlpatterns = [
     path('taxes/<int:pk>/', TaxDetail.as_view(), name='tax-detail'),
 ]
 
-budget_urlpatterns = format_suffix_patterns(budget_urlpatterns)
+urlpatterns = format_suffix_patterns(urlpatterns)

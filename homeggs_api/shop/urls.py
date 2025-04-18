@@ -5,7 +5,9 @@ from .views import (
     ProductList, ProductDetail,
 )
 
-shop_urlpatterns = [
+app_name = 'shop'
+
+urlpatterns = [
     # path('coasts/', CoastList.as_view(), name='coast-list'),
     # path('coasts/<int:pk>/', CoastDetail.as_view(), name='coast-detail'),
     path('products/', ProductList.as_view(), name='product-list'),
@@ -14,4 +16,4 @@ shop_urlpatterns = [
     # path('shops/<int:pk>/', ShopDetail.as_view(), name='shop-detail'),
 ]
 
-shop_urlpatterns = format_suffix_patterns(shop_urlpatterns)
+urlpatterns = format_suffix_patterns(urlpatterns)
