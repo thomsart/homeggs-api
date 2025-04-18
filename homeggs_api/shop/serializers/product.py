@@ -5,7 +5,7 @@ Module of shop/serializers/product.py
 from . import serializers, Product
 
 
-class CreateProductSerializer(serializers.Serializer):
+class CreateProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = ['name', 'quantity', 'kilo', 'litre']
