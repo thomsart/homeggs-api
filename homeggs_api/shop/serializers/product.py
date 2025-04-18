@@ -6,7 +6,9 @@ from . import serializers, Product
 
 
 class CreateProductSerializer(serializers.Serializer):
-    ...
+    class Meta:
+        model = Product
+        fields = ['name', 'quantity', 'kilo', 'litre']
 
 
 class UpdateProductSerializer(serializers.ModelSerializer):
