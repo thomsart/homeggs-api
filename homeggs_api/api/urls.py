@@ -18,11 +18,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+# Import each app_name
+from account.urls import app_name as account
+from budget.urls import app_name as budget
+from shop.urls import app_name as shop
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('', include('account.urls', namespace='account')),
-    path('', include('budget.urls', namespace='budget')),
-    path('', include('shop.urls', namespace='shop')),
+    path(f'{account}/', include('account.urls', namespace=account)),
+    path(f'{budget}/', include('budget.urls', namespace=budget)),
+    path(f'{shop}/', include('shop.urls', namespace=shop)),
 ]

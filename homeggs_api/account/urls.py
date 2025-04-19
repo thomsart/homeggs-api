@@ -5,8 +5,6 @@ Module for account urls
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
-from .views import UserLogin, UserLogout
-
 
 app_name = 'account'
 
