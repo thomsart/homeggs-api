@@ -108,7 +108,7 @@ class ProductDetail(APIView):
         try:
             product.delete()
 
-            return Response(status=status.STATUS_202_ACCEPTED)
+            return Response(status=status.HTTP_202_ACCEPTED)
 
         except PermissionError:
 
